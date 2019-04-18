@@ -1,0 +1,15 @@
+version: "2.3"
+
+services:
+
+  opencv:
+    container_name: opencv
+    build: .
+    environment:
+      - DISPLAY
+    ipc: host # for GUI
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw  # for GUI access
+      - .:/development
+    working_dir: /development
+    command: ["sh", "-c", "python3 -u main.py"]
